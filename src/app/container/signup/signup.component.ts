@@ -17,6 +17,7 @@ export class SignupComponent implements OnInit {
   loginForm: FormGroup;
 
   constructor(private apiService: ApiService,private router: Router,private alterService: AlertService) {
+    //login form
     this.loginForm=new FormGroup({
       email: new FormControl(null,[Validators.required,Validators.email]),
       password: new FormControl(null,[Validators.required,Validators.maxLength(14),Validators.minLength(4)]),
