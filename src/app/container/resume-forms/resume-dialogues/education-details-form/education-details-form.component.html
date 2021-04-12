@@ -1,0 +1,51 @@
+<form [formGroup]="this.educationForm" (ngSubmit)="this.educationForm.valid && addOrUpdate()">
+    <div fxLayout="column" fxLayoutGap="10px">
+        <mat-form-field>
+            <input formControlName="school_name" matInput placeholder="School Name or College Name" />
+            <mat-error>Please enter school/college name</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input formControlName="city" matInput placeholder="City" />
+            <mat-error>Please enter city name</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input formControlName="state" matInput placeholder="State" />
+            <mat-error>Please enter state name</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input formControlName="field" matInput placeholder="Field" />
+            <mat-hint>
+                Example @ B.Tech in Computer Science
+            </mat-hint>
+            <mat-error>Please enter degree name</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input formControlName="percentage" matInput placeholder="Percentage" />
+            <mat-error>Please enter percentage</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input formControlName="degree_type" matInput placeholder="Degree Type" />
+            <mat-hint>
+                Example @ Diploma,Graduation
+            </mat-hint>
+            <mat-error>Please enter degree type</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Graduation Month</mat-label>
+            <mat-select formControlName="graduation_month">
+
+                <mat-option *ngFor="let month of this.monthArray" [value]="month">
+                    {{month}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <input formControlName="graduation_year" matInput placeholder="Graduation Year" />
+        </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="20px">
+        <button mat-raised-button color="primary" *ngIf="this.data.education">Update</button>
+        <button mat-raised-button color="primary" *ngIf="!this.data.education">Save</button>
+        <button type="button" (click)="this.dialogRef.close()" mat-raised-button color="warn">Cancel</button>
+    </div>
+</form>

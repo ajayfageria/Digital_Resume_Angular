@@ -1,3 +1,5 @@
+import { EducationComponent } from './container/resume-forms/education/education.component';
+import { Education } from './models/education';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -29,8 +31,11 @@ import { ResumeNameComponent } from './container/onboarding/resume-name/resume-n
 import { UploadComponent } from './container/tabs/upload/upload.component';
 import { UploadFromDiskComponent } from './container/tabs/upload-from-disk/upload-from-disk.component';
 import { UploadImageComponent } from './container/tabs/upload-image/upload-image.component';
-import { ContactDetailsComponent } from './container/resume-forms/resume-card/contact-details/contact-details.component';
+import { ContactDetailsComponent } from './container/resume-forms/contact-details/contact-details.component';
 import { ContactDetailFormComponent } from './container/resume-forms/resume-dialogues/contact-detail-form/contact-detail-form.component';
+import { EducationDetailsFormComponent } from './container/resume-forms/resume-dialogues/education-details-form/education-details-form.component';
+import { EducationCardComponent } from './container/resume-forms/resume-card/education-card/education-card.component';
+import { EducationListComponent } from './container/resume-forms/resume-lists/education-list/education-list.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +55,10 @@ import { ContactDetailFormComponent } from './container/resume-forms/resume-dial
     ResumeFormComponent,
     ContactDetailsComponent,
     ContactDetailFormComponent,
+    EducationComponent,
+    EducationDetailsFormComponent,
+    EducationCardComponent,
+    EducationListComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,25 @@
+<div style="position: relative;" fxLayout="column" fxLayoutAlign="center center">
+    <div class="cards-outer-div" fxLayout="column" fxLayoutAlign="center center">
+        <ng-container *ngIf="!this.contactDetails">
+            <h3 class="empty-heading">No Contact Details Added Yet</h3>
+        </ng-container>
+        <ng-container *ngIf="this.contactDetails">
+            <h4 class="resume-form-info-card-heading">{{this.contactDetails.first_name}}</h4>
+            <h4 class="resume-form-info-card-heading">{{this.contactDetails.last_name}}</h4>
+            <h4 class="resume-form-info-card-heading">{{this.contactDetails.address}}</h4>
+            <h4 class="resume-form-info-card-heading">{{this.contactDetails.city}}</h4>
+            <h4 class="resume-form-info-card-heading">{{this.contactDetails.country}}</h4>
+        </ng-container>
+        <div>
+
+            <div fxLayoutWrap="wrap" fxLayoutAlign="center center">
+                <div class="hover-container">
+                    <div class="hover">
+                        <button class="resume-form-info-card-button" style="margin-top: 2rem;" (click)="openContactForm()" mat-icon-button>
+                            <mat-icon class="resume-form-mat-icon" *ngIf="!this.contactDetails">add</mat-icon>
+                            <mat-icon class="resume-form-mat-icon" *ngIf="this.contactDetails">create</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>

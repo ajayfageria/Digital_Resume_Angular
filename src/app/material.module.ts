@@ -13,6 +13,8 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatDialogModule} from '@angular/material/dialog';
+import { MatOptionModule } from '@angular/material/core';
+import {MatSelectModule} from '@angular/material/select';
 
 const moduleList = [MatButtonModule,
   MatMenuModule,
@@ -29,7 +31,9 @@ const moduleList = [MatButtonModule,
   MatStepperModule,
   MatTabsModule,
   MatExpansionModule,
-  MatDialogModule] 
+  MatDialogModule,
+  MatOptionModule,
+  MatSelectModule] 
 @NgModule({
   imports: [
     moduleList

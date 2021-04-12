@@ -50,6 +50,21 @@ deleteImage(resumeId: string){
 }
 addVideo(resumeId: string,data: {video_url: string}){
     return this.httpService.patch('/resume/import/video/' + resumeId,data)
-
 }
+updateContactDetails(data: any, contactDetailId: string) {
+    return this.httpService.patch('/resume/update/contactDetails/' + contactDetailId, data);
+      }
+addContactDetails(data: any, resumeId: string) {
+    return this.httpService.post('/resume/add/contactDetails/' + resumeId, data);
+    }
+addEducation(data: any, resumeId: string) {
+    return this.httpService.post('/resume/add/education/' + resumeId, data);
+    }
+        
+updateEducation(data: any, educationId: string) {
+    return this.httpService.patch('/resume/update/education/' + educationId, data);
+    }
+deleteEducation(educationId: string) {
+   return this.httpService.delete('/resume/delete/education/'+ educationId)
+} 
 }

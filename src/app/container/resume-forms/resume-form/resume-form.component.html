@@ -9,7 +9,18 @@
                 Enter your contact details
             </mat-panel-description>
         </mat-expansion-panel-header>
-        <app-contact-details [resume]="resume"></app-contact-details>
+        <app-contact-details [resumeId]="this.resume._id" [contactDetails]="this.resume.contact_details"></app-contact-details>
+    </mat-expansion-panel>
+    <mat-expansion-panel style="margin-top: 1%;">
+        <mat-expansion-panel-header class="res-mat-expansion-panel-header">
+            <mat-panel-title>
+                Education Details
+            </mat-panel-title>
+            <mat-panel-description>
+                Enter your education details
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <app-education [resumeId]="resume._id" [educations]="resume.education"></app-education>
     </mat-expansion-panel>
 
 </mat-accordion>

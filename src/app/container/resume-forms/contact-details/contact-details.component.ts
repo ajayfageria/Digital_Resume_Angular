@@ -1,7 +1,7 @@
-import { ContactDetailFormComponent } from './../../resume-dialogues/contact-detail-form/contact-detail-form.component';
+import { ContactDetailFormComponent } from '../resume-dialogues/contact-detail-form/contact-detail-form.component';
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Resume } from 'src/app/models/resume';
+import { Contact, Resume } from 'src/app/models/resume';
 
 @Component({
   selector: 'app-contact-details',
@@ -9,14 +9,15 @@ import { Resume } from 'src/app/models/resume';
   styleUrls: ['./contact-details.component.css']
 })
 export class ContactDetailsComponent implements OnInit {
-  @Input() resume!: Resume;
+  @Input() contactDetails!: Contact;
+  @Input() resumeId: string='';
   constructor(private matDialog: MatDialog) { }
 
   ngOnInit(): void {
   }
   openContactForm(){
   this.matDialog.open(ContactDetailFormComponent,{
-    width: '400px',data: this.resume,
+    width: '90%',height: '90%',data: {contactDetails: this.contactDetails, resumeId: this.resumeId}
   }
     )
   }
