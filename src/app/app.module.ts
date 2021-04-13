@@ -36,6 +36,10 @@ import { ContactDetailFormComponent } from './container/resume-forms/resume-dial
 import { EducationDetailsFormComponent } from './container/resume-forms/resume-dialogues/education-details-form/education-details-form.component';
 import { EducationCardComponent } from './container/resume-forms/resume-card/education-card/education-card.component';
 import { EducationListComponent } from './container/resume-forms/resume-lists/education-list/education-list.component';
+import { EmploymentHistoryComponent } from './container/resume-forms/employment-history/employment-history.component';
+import { EmploymentHistoryFormComponent } from './container/resume-forms/resume-dialogues/employment-history-form/employment-history-form.component';
+import { EmployementHistoryListsComponent } from './container/resume-forms/resume-lists/employement-history-lists/employement-history-lists.component';
+import { EmployementHistoryCardComponent } from './container/resume-forms/resume-card/employement-history-card/employement-history-card.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +62,11 @@ import { EducationListComponent } from './container/resume-forms/resume-lists/ed
     EducationComponent,
     EducationDetailsFormComponent,
     EducationCardComponent,
-    EducationListComponent
+    EducationListComponent,
+    EmploymentHistoryComponent,
+    EmploymentHistoryFormComponent,
+    EmployementHistoryListsComponent,
+    EmployementHistoryCardComponent
   ],
   imports: [
     BrowserModule,
