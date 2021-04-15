@@ -40,6 +40,10 @@ import { EmploymentHistoryComponent } from './container/resume-forms/employment-
 import { EmploymentHistoryFormComponent } from './container/resume-forms/resume-dialogues/employment-history-form/employment-history-form.component';
 import { EmployementHistoryListsComponent } from './container/resume-forms/resume-lists/employement-history-lists/employement-history-lists.component';
 import { EmployementHistoryCardComponent } from './container/resume-forms/resume-card/employement-history-card/employement-history-card.component';
+import { InterestComponent } from './container/resume-forms/interest/interest.component';
+import { InterestCardComponent } from './container/resume-forms/resume-card/interest-card/interest-card.component';
+import { InterestFormComponent } from './container/resume-forms/resume-dialogues/interest-form/interest-form.component';
+import { InterestListComponent } from './container/resume-forms/resume-lists/interest-list/interest-list.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +70,11 @@ import { EmployementHistoryCardComponent } from './container/resume-forms/resume
     EmploymentHistoryComponent,
     EmploymentHistoryFormComponent,
     EmployementHistoryListsComponent,
-    EmployementHistoryCardComponent
+    EmployementHistoryCardComponent,
+    InterestComponent,
+    InterestCardComponent,
+    InterestFormComponent,
+    InterestListComponent
   ],
   imports: [
     BrowserModule,
