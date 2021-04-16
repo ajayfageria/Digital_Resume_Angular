@@ -39,7 +39,7 @@ body {
     background-color: #e5fade;
     border: 2.5px dashed #d8d8d8;
     width: 95%;
-    height: 100%;
+    height: 7rem;
 }
 
 .cards-outer-div:hover .hover-container {
