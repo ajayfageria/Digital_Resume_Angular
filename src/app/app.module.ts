@@ -48,6 +48,10 @@ import { SkillsComponent } from './container/resume-forms/skills/skills.componen
 import { SkillListsComponent } from './container/resume-forms/resume-lists/skill-lists/skill-lists.component';
 import { SkillFormComponent } from './container/resume-forms/resume-dialogues/skill-form/skill-form.component';
 import { SkillCardComponent } from './container/resume-forms/resume-card/skill-card/skill-card.component';
+import { LanguageComponent } from './container/resume-forms/language/language.component';
+import { LanguageListComponent } from './container/resume-forms/resume-lists/language-list/language-list.component';
+import { LanguageCardComponent } from './container/resume-forms/resume-card/language-card/language-card.component';
+import { LanguageFormComponent } from './container/resume-forms/resume-dialogues/language-form/language-form.component';
 
 @NgModule({
   declarations: [
@@ -82,7 +86,11 @@ import { SkillCardComponent } from './container/resume-forms/resume-card/skill-c
     SkillsComponent,
     SkillListsComponent,
     SkillFormComponent,
-    SkillCardComponent
+    SkillCardComponent,
+    LanguageComponent,
+    LanguageListComponent,
+    LanguageCardComponent,
+    LanguageFormComponent
   ],
   imports: [
     BrowserModule,

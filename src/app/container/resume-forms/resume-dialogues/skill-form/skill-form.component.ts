@@ -35,8 +35,10 @@ export class SkillFormComponent implements OnInit {
   addOrUpdate() {
     if (this.data.skill) {
       this.update();
+      this.dialogRef.close();
     } else {
       this.save();
+      this.dialogRef.close();
     }
   }
 

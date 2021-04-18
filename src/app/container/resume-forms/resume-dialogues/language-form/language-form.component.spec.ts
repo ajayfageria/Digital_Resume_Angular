@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SkillFormComponent } from './skill-form.component';
+import { LanguageFormComponent } from './language-form.component';
 
-describe('SkillFormComponent', () => {
-  let component: SkillFormComponent;
-  let fixture: ComponentFixture<SkillFormComponent>;
+describe('LanguageFormComponent', () => {
+  let component: LanguageFormComponent;
+  let fixture: ComponentFixture<LanguageFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SkillFormComponent ]
+      declarations: [ LanguageFormComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SkillFormComponent);
+    fixture = TestBed.createComponent(LanguageFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
