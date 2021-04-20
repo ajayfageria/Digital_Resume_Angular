@@ -58,5 +58,14 @@
         </mat-expansion-panel-header>
         <app-language [languages]="resume.languages" [resumeId]="resume._id"></app-language>
     </mat-expansion-panel>
+    <mat-expansion-panel style="margin-top: 1%;">
+        <mat-expansion-panel-header>
+            <mat-panel-title>Industrial Exposure</mat-panel-title>
+            <mat-panel-description>
+                Describe about your Industrial Exposure
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <app-industrial-exposure [industrialExposures]="resume.industrialExposures" [resumeId]="resume._id"></app-industrial-exposure>
+    </mat-expansion-panel>
 
 </mat-accordion>
