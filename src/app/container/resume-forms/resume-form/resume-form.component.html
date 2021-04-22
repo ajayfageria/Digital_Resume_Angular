@@ -76,5 +76,14 @@
         </mat-expansion-panel-header>
         <app-award [awards]="resume.award_achivements" [resumeId]="resume._id"></app-award>
     </mat-expansion-panel>
+    <mat-expansion-panel style="margin-top: 1%;">
+        <mat-expansion-panel-header>
+            <mat-panel-title>Objective</mat-panel-title>
+            <mat-panel-description>
+                Describe your career objective
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <app-objective [objectives]="resume.objectives" [resumeId]="resume._id"></app-objective>
+    </mat-expansion-panel>
 
 </mat-accordion>

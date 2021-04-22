@@ -60,6 +60,10 @@ import { AwardComponent } from './container/resume-forms/award/award.component';
 import { AwardListComponent } from './container/resume-forms/resume-lists/award-list/award-list.component';
 import { AwardCardComponent } from './container/resume-forms/resume-card/award-card/award-card.component';
 import { AwardFormComponent } from './container/resume-forms/resume-dialogues/award-form/award-form.component';
+import { ObjectiveComponent } from './container/resume-forms/objective/objective.component';
+import { ObjectiveListComponent } from './container/resume-forms/resume-lists/objective-list/objective-list.component';
+import { ObjectiveCardComponent } from './container/resume-forms/resume-card/objective-card/objective-card.component';
+import { ObjectivesFormComponent } from './container/resume-forms/resume-dialogues/objectives-form/objectives-form.component';
 
 @NgModule({
   declarations: [
@@ -106,7 +110,11 @@ import { AwardFormComponent } from './container/resume-forms/resume-dialogues/aw
     AwardComponent,
     AwardListComponent,
     AwardCardComponent,
-    AwardFormComponent
+    AwardFormComponent,
+    ObjectiveComponent,
+    ObjectiveListComponent,
+    ObjectiveCardComponent,
+    ObjectivesFormComponent
   ],
   imports: [
     BrowserModule,
