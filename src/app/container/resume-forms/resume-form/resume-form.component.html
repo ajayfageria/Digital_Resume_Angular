@@ -85,5 +85,14 @@
         </mat-expansion-panel-header>
         <app-objective [objectives]="resume.objectives" [resumeId]="resume._id"></app-objective>
     </mat-expansion-panel>
+    <mat-expansion-panel style="margin-top: 1%;">
+        <mat-expansion-panel-header>
+            <mat-panel-title>Reference</mat-panel-title>
+            <mat-panel-description>
+                Describe about your Reference
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <app-reference [references]="resume.refrences" [resumeId]="resume._id"></app-reference>
+    </mat-expansion-panel>
 
 </mat-accordion>

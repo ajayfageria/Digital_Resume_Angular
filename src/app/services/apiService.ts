@@ -144,4 +144,15 @@ export class ApiService {
       deleteObjective(objectiveId: string) {
         return this.httpService.delete('/resume/delete/objective/' + objectiveId);
       }
+      addReference(data: any, resumeId: string) {
+        return this.httpService.post('/resume/add/refrence/' + resumeId, data);
+      }
+    
+      updateReference(data: any, referenceId: string) {
+        return this.httpService.patch('/resume/update/refrence/' + referenceId, data);
+      }
+    
+      deleteReference(referenceId: string) {
+        return this.httpService.delete('/resume/delete/refrence/' + referenceId);
+      }
 }
