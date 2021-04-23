@@ -94,5 +94,14 @@
         </mat-expansion-panel-header>
         <app-reference [references]="resume.refrences" [resumeId]="resume._id"></app-reference>
     </mat-expansion-panel>
+    <mat-expansion-panel style="margin-top: 1%;">
+        <mat-expansion-panel-header>
+            <mat-panel-title>Project Details</mat-panel-title>
+            <mat-panel-description>
+                Add your Project Details
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <app-project-details [projectDetails]="resume.projectDetails" [resumeId]="resume._id"></app-project-details>
+    </mat-expansion-panel>
 
 </mat-accordion>
