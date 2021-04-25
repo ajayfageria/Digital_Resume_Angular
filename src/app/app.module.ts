@@ -72,6 +72,10 @@ import { ProjectDetailsComponent } from './container/resume-forms/project-detail
 import { ProjectDetailsListComponent } from './container/resume-forms/resume-lists/project-details-list/project-details-list.component';
 import { ProjectdetailsformComponent } from './container/resume-forms/resume-dialogues/projectdetailsform/projectdetailsform.component';
 import { ProjectDetailsCardComponent } from './container/resume-forms/resume-card/project-details-card/project-details-card.component';
+import { StrengthComponent } from './container/resume-forms/strength/strength.component';
+import { StrengthCardComponent } from './container/resume-forms/resume-card/strength-card/strength-card.component';
+import { StrengthFormComponent } from './container/resume-forms/resume-dialogues/strength-form/strength-form.component';
+import { StrengthListComponent } from './container/resume-forms/resume-lists/strength-list/strength-list.component';
 
 @NgModule({
   declarations: [
@@ -130,7 +134,11 @@ import { ProjectDetailsCardComponent } from './container/resume-forms/resume-car
     ProjectDetailsComponent,
     ProjectDetailsListComponent,
     ProjectdetailsformComponent,
-    ProjectDetailsCardComponent
+    ProjectDetailsCardComponent,
+    StrengthComponent,
+    StrengthCardComponent,
+    StrengthFormComponent,
+    StrengthListComponent
   ],
   imports: [
     BrowserModule,

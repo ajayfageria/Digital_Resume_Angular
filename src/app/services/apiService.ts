@@ -124,46 +124,58 @@ export class ApiService {
     }
     addAward(data: any, resumeId: string) {
         return this.httpService.post('/resume/add/award/' + resumeId, data);
-      }
-    
-      updateAward(data: any, awardId: string) {
+    }
+
+    updateAward(data: any, awardId: string) {
         return this.httpService.patch('/resume/update/awardAchivements/' + awardId, data);
-      }
-    
-      deleteAward(awardId: string) {
+    }
+
+    deleteAward(awardId: string) {
         return this.httpService.delete('/resume/delete/awardAchivements/' + awardId);
-      }
-      addObjective(data: any, resumeId: string) {
+    }
+    addObjective(data: any, resumeId: string) {
         return this.httpService.post('/resume/add/objective/' + resumeId, data);
-      }
-    
-      updateObjective(data: any, objectiveId: string) {
+    }
+
+    updateObjective(data: any, objectiveId: string) {
         return this.httpService.patch('/resume/update/objective/' + objectiveId, data);
-      }
-    
-      deleteObjective(objectiveId: string) {
+    }
+
+    deleteObjective(objectiveId: string) {
         return this.httpService.delete('/resume/delete/objective/' + objectiveId);
-      }
-      addReference(data: any, resumeId: string) {
+    }
+    addReference(data: any, resumeId: string) {
         return this.httpService.post('/resume/add/refrence/' + resumeId, data);
-      }
-    
-      updateReference(data: any, referenceId: string) {
+    }
+
+    updateReference(data: any, referenceId: string) {
         return this.httpService.patch('/resume/update/refrence/' + referenceId, data);
-      }
-    
-      deleteReference(referenceId: string) {
+    }
+
+    deleteReference(referenceId: string) {
         return this.httpService.delete('/resume/delete/refrence/' + referenceId);
-      }
-      addProjectDetail(data: any, resumeId: string) {
+    }
+    addProjectDetail(data: any, resumeId: string) {
         return this.httpService.post('/resume/add/projectDetail/' + resumeId, data);
-      }
-    
-      updateProjectDetail(data: any, projectDetailId: string) {
+    }
+
+    updateProjectDetail(data: any, projectDetailId: string) {
         return this.httpService.patch('/resume/update/projectDetail/' + projectDetailId, data);
-      }
-    
-      deleteProjectDetail(projectDetailId: string) {
+    }
+
+    deleteProjectDetail(projectDetailId: string) {
         return this.httpService.delete('/resume/delete/projectDetail/' + projectDetailId);
-      }
+    }
+
+    addStrength(data: any, resumeId: string) {
+        return this.httpService.post('/resume/add/strength/' + resumeId, data);
+    }
+
+    updateStrength(data: any, strengthId: string) {
+        return this.httpService.patch('/resume/update/strength/' + strengthId, data);
+    }
+
+    deleteStrength(strengthId: string) {
+        return this.httpService.delete('/resume/delete/strength/' + strengthId);
+    }
 }
