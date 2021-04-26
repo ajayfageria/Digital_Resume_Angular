@@ -178,4 +178,15 @@ export class ApiService {
     deleteStrength(strengthId: string) {
         return this.httpService.delete('/resume/delete/strength/' + strengthId);
     }
+    addWeakness(data: any, resumeId: string) {
+        return this.httpService.post('/resume/add/weakness/' + resumeId, data);
+    }
+
+    deleteWeakness(weaknessId: string) {
+        return this.httpService.delete('/resume/delete/weakness/' + weaknessId);
+    }
+
+    updateWeakness(data: any, weaknessId: string) {
+        return this.httpService.patch('/resume/update/weakness/' + weaknessId, data);
+    }
 }

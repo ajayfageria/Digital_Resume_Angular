@@ -112,5 +112,14 @@
         </mat-expansion-panel-header>
         <app-strength [strength]="resume.strengths" [resumeId]="resume._id"></app-strength>
     </mat-expansion-panel>
+    <mat-expansion-panel style="margin-top: 1%;">
+        <mat-expansion-panel-header>
+            <mat-panel-title>Weakness</mat-panel-title>
+            <mat-panel-description>
+                List down your weakness
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <app-weakness [weaknesses]="resume.weakness" [resumeId]="resume._id"></app-weakness>
+    </mat-expansion-panel>
 
 </mat-accordion>

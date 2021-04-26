@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StrengthComponent } from './strength.component';
+import { WeaknessFormComponent } from './weakness-form.component';
 
-describe('StrengthComponent', () => {
-  let component: StrengthComponent;
-  let fixture: ComponentFixture<StrengthComponent>;
+describe('WeaknessFormComponent', () => {
+  let component: WeaknessFormComponent;
+  let fixture: ComponentFixture<WeaknessFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ StrengthComponent ]
+      declarations: [ WeaknessFormComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(StrengthComponent);
+    fixture = TestBed.createComponent(WeaknessFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
