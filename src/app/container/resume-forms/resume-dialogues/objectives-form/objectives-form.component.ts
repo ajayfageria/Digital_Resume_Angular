@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Objective } from 'src/app/models/objective';
+import { ResumeRepository } from 'src/app/repository/resume-repository';
 import { ApiService } from 'src/app/services/apiService';
  
 interface DataType {
@@ -16,7 +17,7 @@ interface DataType {
 export class ObjectivesFormComponent implements OnInit {
   form!: FormGroup;
   constructor(public dialogRef: MatDialogRef<ObjectivesFormComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DataType, private apiService: ApiService) { }
+    @Inject(MAT_DIALOG_DATA) public data: DataType, private resumeRepo: ResumeRepository) { }
 
   ngOnInit(): void {
     const objective = this.data.objective ? this.data.objective.objective : null;
@@ -39,15 +40,15 @@ export class ObjectivesFormComponent implements OnInit {
   }
 
   save() {
-    const observer$ = this.apiService.addObjective(this.form.value, this.data.resumeId);
-    observer$.subscribe(data => {
+    const observer$ = this.resumeRepo.addObjective(this.form.value, this.data.resumeId);
+    observer$.subscribe((data: any) => {
       this.dialogRef.close();
     });
   }
 
   update() {
-    const observer$ = this.apiService.updateObjective(this.form.value, this.data.objective._id);
-    observer$.subscribe(data => {
+    const observer$ = this.resumeRepo.updateObjective(this.form.value, this.data.resumeId, this.data.objective._id);
+    observer$.subscribe((data: any) => {
       this.dialogRef.close();
     });
   }

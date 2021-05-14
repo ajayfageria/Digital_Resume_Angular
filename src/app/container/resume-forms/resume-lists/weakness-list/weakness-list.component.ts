@@ -8,6 +8,7 @@ import { Weakness } from 'src/app/models/weakness';
 })
 export class WeaknessListComponent implements OnInit {
   @Input() weaknessList!: Weakness[];
+  @Input() resumeId!: string;
   constructor() { }
 
   ngOnInit(): void {

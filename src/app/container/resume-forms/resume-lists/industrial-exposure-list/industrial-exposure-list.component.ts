@@ -8,6 +8,7 @@ import { IndustrialExposure } from 'src/app/models/industrial-exposure';
 })
 export class IndustrialExposureListComponent implements OnInit {
   @Input() industrialExposureList!: IndustrialExposure[];
+  @Input() resumeId!: string;
   constructor() { }
 
   ngOnInit(): void {

@@ -1,6 +1,7 @@
 import { ApiService } from 'src/app/services/apiService';
 import { FormGroup, FormControl, Validators, ValidatorFn, AsyncValidatorFn, AbstractControl } from '@angular/forms';
 import { Component, Input, OnInit } from '@angular/core';
+import { ResumeRepository } from 'src/app/repository/resume-repository';
 
 @Component({
   selector: 'app-resume-name',
@@ -13,7 +14,7 @@ export class ResumeNameComponent implements OnInit {
   loading: boolean = false;
   checkValidOTP!: AsyncValidatorFn;
   static isNumberCheck: AsyncValidatorFn | AsyncValidatorFn[] | null | undefined;
-  constructor(private apiService: ApiService) { }
+  constructor(private resumeRepo: ResumeRepository) { }
  
   ngOnInit(): void {
     this.resumeForm = new FormGroup({
@@ -29,10 +30,10 @@ export class ResumeNameComponent implements OnInit {
   createResume(){
     //save data using api
     this.loading = true;
-    this.apiService.saveResume(this.resumeForm.value).subscribe(data=>{
+    this.resumeRepo.saveResume(this.resumeForm.value).subscribe(data=>{
       this.loading = false;
       this.isCompleted = true;
-    },error=>{
+    },()=>{
       this.loading = false;
     });
     

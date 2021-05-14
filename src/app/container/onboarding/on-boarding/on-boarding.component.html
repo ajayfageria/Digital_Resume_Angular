@@ -16,7 +16,10 @@
         <ng-template matStepLabel>
             Resume Details
         </ng-template>
-        <app-resume-form [resume]="resume"></app-resume-form>
+        <app-resume-form></app-resume-form>
+        <div fxLayout="column" fxLayoutAlign="center center" fxFlex="100%">
+            <button (click)="finish()" style="margin-top: 1rem" mat-raised-button color="accent">Finish</button>
+        </div>
     </mat-step>
 
 </mat-horizontal-stepper>

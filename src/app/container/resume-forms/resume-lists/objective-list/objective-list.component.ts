@@ -8,6 +8,7 @@ import { Objective } from 'src/app/models/objective';
 })
 export class ObjectiveListComponent implements OnInit {
   @Input() objectives!: Objective[];
+  @Input() resumeId!: string;
   constructor() { }
 
   ngOnInit(): void {

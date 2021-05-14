@@ -2,6 +2,7 @@ import { ApiService } from 'src/app/services/apiService';
 import { Component, ElementRef, Input, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { AlertService } from 'src/app/services/alertService';
 import { Resume } from 'src/app/models/resume';
+import { ResumeRepository } from 'src/app/repository/resume-repository';
 
 @Component({
   selector: 'app-upload-image',
@@ -19,7 +20,7 @@ export class UploadImageComponent implements OnInit, AfterViewInit {
  @Input('resume')resume!: Resume;
   @ViewChild('fileInput') fileInput!: ElementRef;
   @ViewChild('previewImage') previewImage!: ElementRef;
-  constructor(private alertService: AlertService, private apiService: ApiService) {
+  constructor(private alertService: AlertService, private  resumeRepo: ResumeRepository) {
    
   }
   ngAfterViewInit(){
@@ -39,11 +40,11 @@ export class UploadImageComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
   }
-  fetchResume(){
-   this.apiService.fetchAllResume().subscribe(data=>{
-      const resume = data[0];
-   })
-  }
+  // fetchResume(){
+  //  this.resumeRepo.fetchAllResume().subscribe((data: any)=>{
+  //     const resume = data[0];
+  //  })
+  // }
   onImageSelect(value: any){
     const file = value.target.files[0];
     this.file = file;
@@ -63,12 +64,12 @@ export class UploadImageComponent implements OnInit, AfterViewInit {
   }
   save() {
     this.loading = true;
-      this.apiService.saveOrUpdate(this.file,this.resume?._id).subscribe(data=>{
+      this.resumeRepo.saveOrUpdateImage(this.file,this.resume?._id).subscribe((data: any)=>{
         this.loading = false;
         this.isUploaded = true;
         this.url = data.image_url;
         this.alertService.success("Image uploaded successfully!")
-      },error=>{
+      },(error: any)=>{
         this.loading = false;
       })
     
@@ -76,13 +77,13 @@ export class UploadImageComponent implements OnInit, AfterViewInit {
   }
    delete() {
     this.loading = true;
-  this.apiService.deleteImage(this.resume._id).subscribe(data=>{
+  this.resumeRepo.deleteImage(this.resume._id).subscribe((data: any)=>{
     this.alertService.success('Image deleted successfully!');
     this.isUploaded= false;
     this.isSelected = false;
     this.loading = false;
     this.url = '';
-  },error=>{
+  },(error: any)=>{
     this.loading = false;
 
   });

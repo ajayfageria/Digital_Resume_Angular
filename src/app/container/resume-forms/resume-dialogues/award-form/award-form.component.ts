@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AwardsAchivement } from 'src/app/models/awards-achivement';
+import { ResumeRepository } from 'src/app/repository/resume-repository';
 import { ApiService } from 'src/app/services/apiService';
 
 interface DataType {
@@ -17,7 +18,7 @@ export class AwardFormComponent implements OnInit {
   form!: FormGroup;
   constructor(public dialogRef: MatDialogRef<AwardFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DataType,
-    private apiService: ApiService) { }
+    private resumeRepo: ResumeRepository) { }
 
   ngOnInit(): void {
     const awardAchievement = this.data.award ? this.data.award.awards_and_achivements : null;
@@ -34,15 +35,15 @@ export class AwardFormComponent implements OnInit {
   }
 
   save() {
-    const observer$ = this.apiService.addAward(this.form.value, this.data.resumeId);
-    observer$.subscribe(data => {
+    const observer$ = this.resumeRepo.addAward(this.form.value, this.data.resumeId);
+    observer$.subscribe((data: any) => {
       this.dialogRef.close();
     });
   }
 
   update() {
-    const observer$ = this.apiService.updateAward(this.form.value, this.data.award._id);
-    observer$.subscribe(data => {
+    const observer$ = this.resumeRepo.updateAward(this.form.value, this.data.resumeId, this.data.award._id);
+    observer$.subscribe((data: any) => {
       this.dialogRef.close();
     });
   }

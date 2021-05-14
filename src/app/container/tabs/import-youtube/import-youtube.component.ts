@@ -3,6 +3,7 @@ import { Component, Input, OnInit, AfterViewInit } from '@angular/core';
 import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Resume } from 'src/app/models/resume';
 import { AlertService } from 'src/app/services/alertService';
+import { ResumeRepository } from 'src/app/repository/resume-repository';
 
 @Component({
   selector: 'app-import-youtube',
@@ -17,7 +18,7 @@ export class ImportYoutubeComponent implements OnInit,AfterViewInit {
   uploadAgain: boolean = false;
   YOUTUBE_REGEX = '^((?:https?:)?\\/\\/)?((?:www|m)\\.)?((?:youtube\\.' +
     'com|youtu.be))(\\/(?:[\\w\\-]+\\?v=|embed\\/|v\\/)?)([\\w\\-]+)(\\S+)?$'
-  constructor(private apiService: ApiService, private alertService: AlertService) {
+  constructor(private resumeRepo: ResumeRepository, private alertService: AlertService) {
     this.youtubeForm = new FormGroup({
       video_url : new FormControl(null,[Validators.required,Validators.pattern(this.YOUTUBE_REGEX)])
      });
@@ -30,12 +31,12 @@ export class ImportYoutubeComponent implements OnInit,AfterViewInit {
   }
   uploadVideo(){
     this.loading = true;
-  throw this.apiService.addVideo(this.resume._id,this.youtubeForm.value).subscribe(data=>{
+  throw this.resumeRepo.addVideo(this.resume._id,this.youtubeForm.value).subscribe((data: any)=>{
    this.loading = false;
    const message = this.isVideoUploaded ? 'Video Updated Successfully' : 'Video uploaded SuccessFully';
    this.isVideoUploaded = true;
    this.alertService.success(message);
-  },error=>{
+  },(error: any)=>{
     this.loading = false;
   });
   }

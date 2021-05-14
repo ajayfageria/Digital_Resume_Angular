@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Strength } from 'src/app/models/strength';
+import { ResumeRepository } from 'src/app/repository/resume-repository';
 import { ApiService } from 'src/app/services/apiService';
 
 
@@ -17,7 +18,7 @@ interface DataType {
 export class StrengthFormComponent implements OnInit {
   form!: FormGroup;
   constructor(public dialogRef: MatDialogRef<StrengthFormComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DataType, private apiService: ApiService) { }
+    @Inject(MAT_DIALOG_DATA) public data: DataType, private resumeRepo: ResumeRepository) { }
 
   ngOnInit(): void {
     const name = this.data.strength ? this.data.strength.name : null;
@@ -34,15 +35,15 @@ export class StrengthFormComponent implements OnInit {
   }
 
   update() {
-    const observer$ = this.apiService.updateStrength(this.form.value, this.data.strength._id);
-    observer$.subscribe(data => {
+    const observer$ = this.resumeRepo.updateStrength(this.form.value, this.data.resumeId, this.data.strength._id);
+    observer$.subscribe((data: any) => {
       this.dialogRef.close();
     });
   }
 
   save() {
-    const observer$ = this.apiService.addStrength(this.form.value, this.data.resumeId);
-    observer$.subscribe(data => {
+    const observer$ = this.resumeRepo.addStrength(this.form.value, this.data.resumeId);
+    observer$.subscribe((data: any) => {
       this.dialogRef.close();
     });
   }

@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Weakness } from 'src/app/models/weakness';
+import { ResumeRepository } from 'src/app/repository/resume-repository';
 import { ApiService } from 'src/app/services/apiService';
 
 
@@ -18,7 +19,7 @@ interface DataType {
 export class WeaknessFormComponent implements OnInit {
   form!: FormGroup;
   constructor(public dialogRef: MatDialogRef<WeaknessFormComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DataType, private apiService: ApiService) { }
+    @Inject(MAT_DIALOG_DATA) public data: DataType, private resumeRepo: ResumeRepository) { }
 
   ngOnInit(): void {
     const name = this.data.weakness ? this.data.weakness.name : null;
@@ -35,15 +36,15 @@ export class WeaknessFormComponent implements OnInit {
   }
 
   update() {
-    const observer$ = this.apiService.updateWeakness(this.form.value, this.data.weakness._id);
-    observer$.subscribe(data => {
+    const observer$ = this.resumeRepo.updateWeakness(this.form.value, this.data.resumeId, this.data.weakness._id);
+    observer$.subscribe((data: any) => {
       this.dialogRef.close();
     });
   }
 
   save() {
-    const observer$ = this.apiService.addWeakness(this.form.value, this.data.resumeId);
-    observer$.subscribe(data => {
+    const observer$ = this.resumeRepo.addWeakness(this.form.value, this.data.resumeId);
+    observer$.subscribe((data: any) => {
       this.dialogRef.close();
     });
   }

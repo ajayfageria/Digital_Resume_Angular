@@ -80,6 +80,11 @@ import { WeaknessComponent } from './container/resume-forms/weakness/weakness.co
 import { WeaknessFormComponent } from './container/resume-forms/resume-dialogues/weakness-form/weakness-form.component';
 import { WeaknessListComponent } from './container/resume-forms/resume-lists/weakness-list/weakness-list.component';
 import { WeaknessCardComponent } from './container/resume-forms/resume-card/weakness-card/weakness-card.component';
+import { Truncate } from './pipes/truncate';
+import { StoreModule } from '@ngrx/store';
+import { rootReducer } from './reducers';
+import { AuthRepository } from './repository/auth-repository';
+import {ResumeRepository} from './repository/resume-repository';
 
 @NgModule({
   declarations: [
@@ -146,7 +151,8 @@ import { WeaknessCardComponent } from './container/resume-forms/resume-card/weak
     WeaknessComponent,
     WeaknessFormComponent,
     WeaknessListComponent,
-    WeaknessCardComponent
+    WeaknessCardComponent,
+    Truncate
   ],
   imports: [
     BrowserModule,
@@ -157,9 +163,10 @@ import { WeaknessCardComponent } from './container/resume-forms/resume-card/weak
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    StoreModule.forRoot(rootReducer),
   ],
   providers: [HttpService,ApiService,AlertService,AuthGuard,AnonGuards,Onboardingcomplete,Onboardingincomplete,
-     Verificatoncompleted,Verificatonincomplete
+     Verificatoncompleted,Verificatonincomplete,AuthRepository, ResumeRepository
   ],
   bootstrap: [AppComponent]
 })

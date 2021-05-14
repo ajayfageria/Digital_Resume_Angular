@@ -1,30 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { filter, takeWhile } from 'rxjs/operators';
+import { AuthRepository } from 'src/app/repository/auth-repository';
 import { AlertService } from 'src/app/services/alertService';
-import { ApiService } from 'src/app/services/apiService';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnDestroy {
   loading:boolean=false;
   title = 'resume-app';
   loginForm: FormGroup;
-  constructor(private router: Router,private apiService: ApiService,private alterService: AlertService) { 
+  isAlive = true;
+  constructor(private router: Router,private authRepo: AuthRepository,private alterService: AlertService) { 
   this.loginForm=new FormGroup({
     email: new FormControl(null,[Validators.required,Validators.email]),
     password: new FormControl(null,[Validators.required,Validators.maxLength(14),Validators.minLength(4)]),
   })}
   ngOnInit(): void {
   }
+  ngOnDestroy() {
+       this.isAlive = false;
+     }
   signup(){
  this.router.navigate(['signup'])
   }
 login(){
-  this.apiService.loginandsettoken(this.loginForm.value).subscribe(data=>{
+  const request$ = this.authRepo.login(this.loginForm.value);
+  request$.pipe(takeWhile(() => this.isAlive),
+       filter(res => !!res)).subscribe(data=>{
+        this.loading = false;
     this.alterService.success('login Successful');
     this.router.navigate(['verify'],{queryParams: {email: data.email}});
   });

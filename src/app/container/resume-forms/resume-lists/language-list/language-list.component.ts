@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class LanguageListComponent implements OnInit {
   @Input() languagelist!: Language[];
+  @Input() resumeId!: string;
   constructor() { }
 
   ngOnInit(): void {

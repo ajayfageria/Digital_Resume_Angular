@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Interest } from 'src/app/models/interest';
+import { ResumeRepository } from 'src/app/repository/resume-repository';
 import { AlertService } from 'src/app/services/alertService';
 import { ApiService } from 'src/app/services/apiService';
 import { InterestFormComponent } from '../../resume-dialogues/interest-form/interest-form.component';
@@ -12,19 +13,20 @@ import { InterestFormComponent } from '../../resume-dialogues/interest-form/inte
 })
 export class InterestCardComponent implements OnInit {
   @Input() interest!: Interest;
-  constructor(private matDialog: MatDialog, private apiService: ApiService, private alertService: AlertService) { }
+  @Input() resumeId!: string;
+  constructor(private matDialog: MatDialog, private resumeRepo: ResumeRepository, private alertService: AlertService) { }
 
   ngOnInit(): void {
   }
   edit() {
     this.matDialog.open(InterestFormComponent, {
-      width: '90%', height: '90%', data: {interest: this.interest}
+      width: '90%', height: '90%', data: {interest: this.interest, resumeId: this.resumeId}
     });
   }
 
   delete() {
-    this.apiService.deleteInterest(this.interest._id)
-      .subscribe(data=> {
+    this.resumeRepo.deleteInterest(this.resumeId, this.interest._id)
+      .subscribe((data: any)=> {
         this.alertService.success('Interest deleted Successfully');
       });
   }

@@ -3,6 +3,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Contact } from 'src/app/models/resume';
+import { ResumeRepository } from 'src/app/repository/resume-repository';
 
 interface DataType {
   contactDetails: Contact;
@@ -19,7 +20,7 @@ interface DataType {
 export class ContactDetailFormComponent implements OnInit {
   contactDetailForm!: FormGroup;
   constructor(public dialogRef: MatDialogRef<ContactDetailFormComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DataType,private apiService: ApiService) { 
+    @Inject(MAT_DIALOG_DATA) public data: DataType,private resumeRepo: ResumeRepository) { 
 
     }
 
@@ -59,14 +60,16 @@ export class ContactDetailFormComponent implements OnInit {
         }
       }
   save() {
-       const observer$ = this.apiService.addContactDetails(this.contactDetailForm.value, this.data.resumeId);
+       const observer$ = this.resumeRepo.addContactDetails(this.contactDetailForm.value, this.data.resumeId);
         observer$.subscribe(data => {
+          this.dialogRef.close();
         });
      }
     
   update() {
-    const observer$ = this.apiService.updateContactDetails(this.contactDetailForm.value, this.data.contactDetails._id);
+    const observer$ = this.resumeRepo.updateContactDetails(this.contactDetailForm.value, this.data.contactDetails._id,this.data.resumeId);
     observer$.subscribe(data => {
+      this.dialogRef.close();
     });
     }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthRepository } from 'src/app/repository/auth-repository';
 import { AlertService } from 'src/app/services/alertService';
 import { ApiService } from 'src/app/services/apiService';
 
@@ -16,7 +17,7 @@ export class SignupComponent implements OnInit {
   isDisabled:boolean=false;
   loginForm: FormGroup;
 
-  constructor(private apiService: ApiService,private router: Router,private alterService: AlertService) {
+  constructor(private authRepository: AuthRepository, private router: Router,private alterService: AlertService) {
     //login form
     this.loginForm=new FormGroup({
       email: new FormControl(null,[Validators.required,Validators.email]),
@@ -33,7 +34,7 @@ export class SignupComponent implements OnInit {
   signup(){
     this.loading=true;
     this.isDisabled=true;
-    this.apiService.signup(this.loginForm.value).subscribe(data=>{
+    this.authRepository.signup(this.loginForm.value).subscribe(data=>{
      
       this.alterService.success('signup Successful');
     this.loading=false;

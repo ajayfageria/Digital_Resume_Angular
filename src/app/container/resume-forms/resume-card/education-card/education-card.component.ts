@@ -4,6 +4,7 @@ import { Education } from 'src/app/models/education';
 import { ApiService } from 'src/app/services/apiService';
 import { MatDialog } from '@angular/material/dialog';
 import { AlertService } from 'src/app/services/alertService';
+import { ResumeRepository } from 'src/app/repository/resume-repository';
 
 @Component({
   selector: 'app-education-card',
@@ -12,18 +13,19 @@ import { AlertService } from 'src/app/services/alertService';
 })
 export class EducationCardComponent implements OnInit {
  @Input() education!: Education;
-  constructor(private matDialog: MatDialog, private apiService: ApiService, private alertService: AlertService) { }
+ @Input() resumeId!: string;
+  constructor(private matDialog: MatDialog, private resumeRepo: ResumeRepository, private alertService: AlertService) { }
 
   ngOnInit(): void {
   }
   edit() {
     this.matDialog.open(EducationDetailsFormComponent, {
-       width: '90%', height: '90%', data: {education: this.education}
+       width: '90%', height: '90%', data: {education: this.education, resumeId: this.resumeId}
          });
   }
   delete() {
-    this.apiService.deleteEducation(this.education._id)
-        .subscribe(data => {
+    this.resumeRepo.deleteEducation(this.resumeId, this.education._id)
+        .subscribe((data: any) => {
           this.alertService.success('education deleted Successfully');
         });
   }

@@ -1,4 +1,4 @@
-<mat-accordion fxLayout="column" fxLayoutAlign="center center">
+<mat-accordion *ngIf="!this.loading" fxLayout="column" fxLayoutAlign="center center">
     <h3 class="tabs-heading res-expansion-title">Enter your resume details</h3>
     <mat-expansion-panel>
         <mat-expansion-panel-header class="res-mat-expansion-panel-header">
@@ -121,5 +121,5 @@
         </mat-expansion-panel-header>
         <app-weakness [weaknesses]="resume.weakness" [resumeId]="resume._id"></app-weakness>
     </mat-expansion-panel>
-
 </mat-accordion>
+<mat-spinner *ngIf="this.loading" color="accent" diameter="40"></mat-spinner>

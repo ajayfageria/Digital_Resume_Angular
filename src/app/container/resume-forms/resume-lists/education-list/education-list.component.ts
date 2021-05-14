@@ -8,6 +8,7 @@ import { Education } from 'src/app/models/education';
 })
 export class EducationListComponent implements OnInit {
   @Input() educationList!: Education[];
+  @Input() resumeId!: string;
   constructor() { }
 
   ngOnInit(): void {

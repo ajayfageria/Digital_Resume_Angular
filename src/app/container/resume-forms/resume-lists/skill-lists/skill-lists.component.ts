@@ -8,6 +8,7 @@ import { Skill } from 'src/app/models/skill';
 })
 export class SkillListsComponent implements OnInit {
   @Input() skillList!: Skill[];
+  @Input() resumeId!: string;
   constructor() { }
 
   ngOnInit(): void {

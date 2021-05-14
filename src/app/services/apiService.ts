@@ -37,6 +37,12 @@ export class ApiService {
     fetchAllResume(): Observable<Resume[]> {
         return this.httpService.get('/resume/all');
     }
+    updateOnBoarding(data: { onboarding: number }) {
+            return this.httpService.patch('/user/update/onboarding', data);
+         }
+    updateViewsCount(data: { views: number }, id: string) {
+       return this.httpService.patch('/resume/update/resume/views/' + id, data);
+         }
     saveResume(data: { name: string }) {
         return this.httpService.post('/resume/add/resume', data);
     }

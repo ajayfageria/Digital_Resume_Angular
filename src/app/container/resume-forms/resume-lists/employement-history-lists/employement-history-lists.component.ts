@@ -8,6 +8,7 @@ import { EmploymentHistory } from 'src/app/models/employment-history';
 })
 export class EmployementHistoryListsComponent implements OnInit {
   @Input() employmentHistoryList!: EmploymentHistory[];
+  @Input() resumeId!: string;
   constructor() { }
 
   ngOnInit(): void {

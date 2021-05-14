@@ -1,7 +1,7 @@
 <div style="position: relative" fxLayoutAlign="center center" fxLayout="column">
     <div style="height: 7rem" class="cards-outer-div" fxLayoutAlign="center center" fxLayout="column">
         <ng-container>
-            <h3 class="resume-form-info-card-heading">{{interest.interest}}</h3>
+            <h3 class="resume-form-info-card-heading">{{interest.interest | truncate}}</h3>
         </ng-container>
         <div fxLayout="row" fxLayoutAlign="center center" fxHide.xs>
             <div class="hover-container">

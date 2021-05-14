@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Language } from 'src/app/models/language';
+import { ResumeRepository } from 'src/app/repository/resume-repository';
 import { ApiService } from 'src/app/services/apiService';
 
 interface DataType {
@@ -18,7 +19,7 @@ export class LanguageFormComponent implements OnInit {
   form!: FormGroup;
   levelArray = ['basic', 'intermediate', 'advance'];
   constructor(public dialogRef: MatDialogRef<LanguageFormComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DataType, private apiService: ApiService) { }
+    @Inject(MAT_DIALOG_DATA) public data: DataType, private resumeRepo: ResumeRepository) { }
 
   ngOnInit(): void {
     const name = this.data.language ? this.data.language.name : null;
@@ -41,15 +42,15 @@ export class LanguageFormComponent implements OnInit {
   }
 
   update() {
-    const observer$ = this.apiService.updateLanguage(this.form.value, this.data.language._id);
-    observer$.subscribe(data => {
+    const observer$ = this.resumeRepo.updateLanguage(this.form.value, this.data.resumeId, this.data.language._id);
+    observer$.subscribe((data: any) => {
       this.dialogRef.close();
     });
   }
 
   save() {
-    const observer$ = this.apiService.addLanguage(this.form.value, this.data.resumeId);
-    observer$.subscribe(data => {
+    const observer$ = this.resumeRepo.addLanguage(this.form.value, this.data.resumeId);
+    observer$.subscribe((data: any) => {
       this.dialogRef.close();
     });
   }

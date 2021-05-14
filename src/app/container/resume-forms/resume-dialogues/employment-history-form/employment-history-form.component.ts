@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { EmploymentHistory } from 'src/app/models/employment-history';
+import { ResumeRepository } from 'src/app/repository/resume-repository';
 import { ApiService } from 'src/app/services/apiService';
 
 interface DataType {
@@ -19,7 +20,7 @@ export class EmploymentHistoryFormComponent implements OnInit {
   monthArray = ['January', 'February', 'March', 'April',
     'May', 'June', 'July', 'August', 'September', 'November', 'December'];
   constructor(public dialogRef: MatDialogRef<EmploymentHistoryFormComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DataType, private apiService: ApiService) { }
+    @Inject(MAT_DIALOG_DATA) public data: DataType, private resumeRepo: ResumeRepository) { }
 
   ngOnInit(): void {
     const employer = this.data.employmentHistory ? this.data.employmentHistory.employer : null;
@@ -52,15 +53,15 @@ export class EmploymentHistoryFormComponent implements OnInit {
   }
 
   save() {
-    const observer$ = this.apiService.addEmploymentHistory(this.form.value, this.data.resumeId);
-    observer$.subscribe(data => {
+    const observer$ = this.resumeRepo.addEmploymentHistory(this.form.value, this.data.resumeId);
+    observer$.subscribe((data: any) => {
       this.dialogRef.close();
     });
   }
 
   update() {
-    const observer$ = this.apiService.updateEmploymentHistory(this.form.value, this.data.employmentHistory._id);
-    observer$.subscribe(data => {
+    const observer$ = this.resumeRepo.updateEmploymentHistory(this.form.value, this.data.employmentHistory._id, this.data.resumeId);
+    observer$.subscribe((data: any) => {
       this.dialogRef.close();
     });
   }

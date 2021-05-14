@@ -53,7 +53,7 @@ body {
 
 .resume-form-info-card-heading {
     margin: 0 !important;
-    ;
+    word-break: break-all !important;
     font-weight: bold !important;
 }
 
@@ -84,4 +84,9 @@ mat-icon {
 
 button {
     color: white !important;
+}
+
+mat-expansion-panel-header {
+    height: 3rem !important;
+    padding: 3px !important;
 }

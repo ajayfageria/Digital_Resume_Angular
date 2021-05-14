@@ -8,6 +8,7 @@ import { Refrence } from 'src/app/models/refrence';
 })
 export class ReferenceListComponent implements OnInit {
   @Input() referenceList!: Refrence[];
+  @Input() resumeId!: string;
   constructor() { }
 
   ngOnInit(): void {

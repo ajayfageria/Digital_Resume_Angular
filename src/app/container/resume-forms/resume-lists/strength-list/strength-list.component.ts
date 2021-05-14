@@ -8,6 +8,7 @@ import { Strength } from 'src/app/models/strength';
 })
 export class StrengthListComponent implements OnInit {
   @Input() strengthList!: Strength[];
+  @Input() resumeId!: string;
   constructor() { }
 
   ngOnInit(): void {

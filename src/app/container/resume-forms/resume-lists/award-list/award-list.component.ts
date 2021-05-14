@@ -8,6 +8,7 @@ import { AwardsAchivement } from 'src/app/models/awards-achivement';
 })
 export class AwardListComponent implements OnInit {
   @Input() awardList!: AwardsAchivement[];
+  @Input() resumeId!: string;
   constructor() { }
 
   ngOnInit(): void {

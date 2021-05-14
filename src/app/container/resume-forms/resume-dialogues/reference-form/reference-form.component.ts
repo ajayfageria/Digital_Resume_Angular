@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Refrence } from 'src/app/models/refrence';
+import { ResumeRepository } from 'src/app/repository/resume-repository';
 import { ApiService } from 'src/app/services/apiService';
 
 
@@ -17,7 +18,7 @@ interface DataType {
 export class ReferenceFormComponent implements OnInit {
   form!: FormGroup;
   constructor(public dialogRef: MatDialogRef<ReferenceFormComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DataType, private apiService: ApiService) { }
+    @Inject(MAT_DIALOG_DATA) public data: DataType, private resumeRepo: ResumeRepository) { }
 
   ngOnInit(): void {
     const name = this.data.reference ? this.data.reference.name : null;
@@ -44,15 +45,15 @@ export class ReferenceFormComponent implements OnInit {
   }
 
   save() {
-    const observer$ = this.apiService.addReference(this.form.value, this.data.resumeId);
-    observer$.subscribe(data => {
+    const observer$ = this.resumeRepo.addReference(this.form.value, this.data.resumeId);
+    observer$.subscribe((data: any) => {
       this.dialogRef.close();
     });
   }
 
   update() {
-    const observer$ = this.apiService.updateReference(this.form.value, this.data.reference._id);
-    observer$.subscribe(data => {
+    const observer$ = this.resumeRepo.updateReference(this.form.value, this.data.resumeId, this.data.reference._id);
+    observer$.subscribe((data: any) => {
       this.dialogRef.close();
     });
   }

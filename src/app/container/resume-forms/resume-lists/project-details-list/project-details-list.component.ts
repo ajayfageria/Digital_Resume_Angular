@@ -8,6 +8,7 @@ import { ProjectDetail } from 'src/app/models/project-detail';
 })
 export class ProjectDetailsListComponent implements OnInit {
   @Input() projectDetailList!: ProjectDetail[];
+  @Input() resumeId!: string;
   constructor() { }
 
   ngOnInit(): void {

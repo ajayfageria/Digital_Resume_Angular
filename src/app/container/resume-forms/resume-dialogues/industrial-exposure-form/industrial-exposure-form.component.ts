@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { IndustrialExposure } from 'src/app/models/industrial-exposure';
+import { ResumeRepository } from 'src/app/repository/resume-repository';
 import { ApiService } from 'src/app/services/apiService';
 
 
@@ -19,7 +20,7 @@ export class IndustrialExposureFormComponent implements OnInit {
   monthArray = ['', 'January', 'February', 'March', 'April',
     'May', 'June', 'July', 'August', 'September', 'November', 'December'];
   constructor(public dialogRef: MatDialogRef<IndustrialExposureFormComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DataType, private apiService: ApiService) { }
+    @Inject(MAT_DIALOG_DATA) public data: DataType, private resumeRepo: ResumeRepository) { }
 
   ngOnInit(): void {
     const organisation = this.data.industrialExposure ? this.data.industrialExposure.organisation : null;
@@ -54,15 +55,15 @@ export class IndustrialExposureFormComponent implements OnInit {
   }
 
   update() {
-    const observer$ = this.apiService.updateIndustrialExposure(this.form.value, this.data.industrialExposure._id);
-    observer$.subscribe(data => {
+    const observer$ = this.resumeRepo.updateIndustrialExposure(this.form.value, this.data.industrialExposure._id);
+    observer$.subscribe((data: any) => {
       this.dialogRef.close();
     });
   }
 
   save() {
-    const observer$ = this.apiService.addIndustrialExposure(this.form.value, this.data.resumeId);
-    observer$.subscribe(data => {
+    const observer$ = this.resumeRepo.addIndustrialExposure(this.form.value, this.data.resumeId);
+    observer$.subscribe((data: any) => {
       this.dialogRef.close();
     });
   }
