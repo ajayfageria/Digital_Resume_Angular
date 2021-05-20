@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { Resume } from 'src/app/models/resume';
 import { ResumeRepository } from 'src/app/repository/resume-repository';
 import { AlertService } from 'src/app/services/alertService';
@@ -13,7 +14,7 @@ import { AddOrEditResumeComponent } from '../dialogues/add-or-edit-resume/add-or
 export class ResumeCardComponent implements OnInit {
   hover = false;
   @Input() resume!: Resume;
-  constructor(private matDialog: MatDialog,private resumeRepo: ResumeRepository,private alertService: AlertService) { }
+  constructor(private matDialog: MatDialog,  private router: Router,private resumeRepo: ResumeRepository,private alertService: AlertService) { }
 
   ngOnInit(): void {
   }
@@ -29,4 +30,7 @@ delete() {
        this.alertService.success('Resume Deleted Successfully');
      });
   }
+  download() {
+        this.router.navigate(['dashboard', 'resume', 'template', this.resume._id]);
+      }
 }
