@@ -1,7 +1,10 @@
-<div fxLayout="column" fxLayoutAlign="center center">
-    <mat-card>
-        <div>
-
-        </div>
-    </mat-card>
-</div>
+<app-blues-template (downloadTemplate)="downloadTemplate($event)" [resume]="resume" *ngIf="templateId == this.templateType.BLUES_TEMPLATE">
+</app-blues-template>
+<app-classic-template (downloadTemplate)="downloadTemplate($event)" [resume]="resume" *ngIf="templateId == this.templateType.CLASSIC_TEMPLATE">
+</app-classic-template>
+<app-modern-template (downloadTemplate)="downloadTemplate($event)" [resume]="resume" *ngIf="templateId == this.templateType.MODERN_TEMPLATE">
+</app-modern-template>
+<app-royal-template (downloadTemplate)="downloadTemplate($event)" [resume]="resume" *ngIf="templateId == this.templateType.ROYAL_TEMPLATE">
+</app-royal-template>
+<app-traditional-panel-template (downloadTemplate)="downloadTemplate($event)" [resume]="resume" *ngIf="templateId == this.templateType.TRADITIONAL_TEMPLATE">
+</app-traditional-panel-template>

@@ -1,11 +1,11 @@
 mat-card {
-    width: 210px;
+    width: 230px;
     text-transform: uppercase;
     margin: 1rem 0;
-    margin-left: 1rem;
+    margin-left: 1.5rem;
 }
 
 img {
-    width: 210px;
+    width: 230px;
     height: 210px;
 }

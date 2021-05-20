@@ -99,6 +99,11 @@ import { AddOrEditResumeComponent } from './components/dialogues/add-or-edit-res
 import { TemplatesComponent } from './container/templates/templates.component';
 import { SingletemplatesComponent } from './container/singletemplates/singletemplates.component';
 import { TemplateCardComponent } from './components/template-card/template-card.component';
+import { BluesTemplateComponent } from './components/templates/blues-template/blues-template.component';
+import { ClassicTemplateComponent } from './components/templates/classic-template/classic-template.component';
+import { ModernTemplateComponent } from './components/templates/modern-template/modern-template.component';
+import { RoyalTemplateComponent } from './components/templates/royal-template/royal-template.component';
+import { TraditionalPanelTemplateComponent } from './components/templates/traditional-panel-template/traditional-panel-template.component';
 
 @NgModule({
   declarations: [
@@ -180,7 +185,12 @@ import { TemplateCardComponent } from './components/template-card/template-card.
     AddOrEditResumeComponent,
     TemplatesComponent,
     SingletemplatesComponent,
-    TemplateCardComponent
+    TemplateCardComponent,
+    BluesTemplateComponent,
+    ClassicTemplateComponent,
+    ModernTemplateComponent,
+    RoyalTemplateComponent,
+    TraditionalPanelTemplateComponent
   ],
   imports: [
     BrowserModule,

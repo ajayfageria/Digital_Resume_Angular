@@ -5,4 +5,12 @@ export class Utility {
       {id: 4, src: '../../assets/4.png', name: 'Traditional Template'},
       {id: 5, src: '../../assets/5.png', name: 'Classic Template'},
     ];
+    
+  }
+  export enum TemplateType {
+    BLUES_TEMPLATE = 1,
+    MODERN_TEMPLATE = 2,
+    ROYAL_TEMPLATE = 3,
+    TRADITIONAL_TEMPLATE = 4,
+    CLASSIC_TEMPLATE = 5
   }
