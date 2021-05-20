@@ -1,6 +1,9 @@
+import { NotFoundComponent } from './container/not-found/not-found.component';
+import { LogoutComponent } from './components/logout/logout.component';
+import { HelpcenterComponent } from './container/dashboard/helpcenter/helpcenter.component';
+import { ResumeComponent } from './container/dashboard/resume/resume.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './container/dashboard/dashboard.component';
 import { ForgotPasswordComponent } from './container/forgot-password/forgot-password.component';
 import { LoginComponent } from './container/login/login.component';
 import { OnBoardingComponent } from './container/onboarding/on-boarding/on-boarding.component';
@@ -13,6 +16,8 @@ import { Onboardingcomplete } from './guards/onboardingcomplete -guards';
 import { Onboardingincomplete } from './guards/onboardingincomplete-guards';
 import { Verificatoncompleted } from './guards/verificationcompleted-guards';
 import { Verificatonincomplete } from './guards/verificatonincomplete-guards';
+import { SettingComponent } from './container/dashboard/setting/setting.component';
+import { DashboardComponent } from './container/layout/dashboard/dashboard.component';
 
 const routes: Routes = [
   {
@@ -39,9 +44,17 @@ const routes: Routes = [
    {
              path: '',
              children: [
-               {path: 'dashboard', component: DashboardComponent}
+               {path: 'dashboard', component: DashboardComponent,
+              children:[
+                {path: 'resume', component: ResumeComponent},
+                {path: 'settings', component: SettingComponent},
+                {path: 'help-center', component: HelpcenterComponent}
+              ]
+              },
+              {path:'logout',component: LogoutComponent},
+              {path:'**',component: NotFoundComponent}
              ],
-             canActivate: [AuthGuard, Verificatoncompleted, Onboardingcomplete]
+            //  canActivate: [AuthGuard, Verificatoncompleted, Onboardingcomplete]
     }
  ];
 

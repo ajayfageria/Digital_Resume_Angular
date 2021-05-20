@@ -51,6 +51,18 @@ body {
     opacity: 1;
 }
 
+.setting-label {
+    font-size: 1.2rem !important;
+}
+
+.settings-input {
+    width: 60% !important;
+}
+
+.res-setting-container {
+    padding: 2rem !important;
+}
+
 .resume-form-info-card-heading {
     margin: 0 !important;
     word-break: break-all !important;

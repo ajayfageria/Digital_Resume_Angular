@@ -22,7 +22,7 @@ export class AnonGuards implements CanActivate{
                 this.router.navigate(['on-boarding']);
              } 
              else{
-                this.router.navigate(['dashboard']);
+                this.router.navigate(['dashboard','resume']);
              }
          }));
         

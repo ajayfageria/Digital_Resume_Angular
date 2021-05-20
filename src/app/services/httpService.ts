@@ -1,14 +1,16 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { Router } from "@angular/router";
+import { Observable, throwError } from "rxjs";
 import { AuthUtils } from "../utility/auth-utils";
+import { AlertService } from "./alertService";
 import { ApiService } from "./apiService";
 
 @Injectable()
 export class HttpService{
     private baseURL='http://localhost:5000/api';
-    constructor(private httpClient: HttpClient){
-        
+    constructor(private httpClient: HttpClient, private router: Router,private alertService: AlertService,){
+    
     }
     get(url:string,paramData?:any):Observable<any>{//get
         const data={params:paramData,headers:this.getAuthHeaders()}
@@ -29,6 +31,22 @@ export class HttpService{
             Authorization: `Bearer ${AuthUtils.getAuthToken()}`
         }
     }
-
+    private errorHandler(response: any) {
+        const error = response.error;
+        const keys = Object.keys(error);
+        const key = keys[0];
+        const message = response.message;
+        const status = response.status;
+        if (status === 401) {
+          this.router.navigate(['logout']);
+          this.alertService.message('Session Expired');
+        }
+        if (key === 'isTrusted') {
+          this.alertService.error('Please connect to internet Connection');
+        } else {
+          this.alertService.error(message);
+        }
+        return throwError({message, error});
+      }
     
 }

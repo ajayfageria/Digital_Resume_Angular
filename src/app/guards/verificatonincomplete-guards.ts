@@ -13,9 +13,10 @@ export class Verificatonincomplete  implements CanActivate{
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): any {
        return this.authRepo.fetchMe().pipe(filter(data => !!data),map(data=>{
            if(!data.verified) {
+               console.log("true");
                return true;
            } else {
-               return this.router.navigate(['dashboard']);
+               return this.router.navigate(['dashboard','resume']);
            }
        }))
     }

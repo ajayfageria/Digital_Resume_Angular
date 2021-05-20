@@ -10,12 +10,12 @@ export const rootReducer : ActionReducerMap <RootReducerState> = {
     user: fromUser.UserReducer,
     resume: fromResume.ResumeReducer
 }
-const getUserRootState = (state: RootReducerState) => state.user;
+const getUserRootState = (state: any) => state.user;
 export const userLoggedIn = createSelector(getUserRootState, fromUser.loggedIn);
 export const userLoggingIn = createSelector(getUserRootState, fromUser.loggingIn);
 export const getUser = createSelector(getUserRootState, fromUser.user);
 
-const getResumeRootState = (state: RootReducerState) => state.resume;
+const getResumeRootState = (state: any) => state.resume;
 export const resumeLoading = createSelector(getResumeRootState, fromResume.getLoading);
 export const resumeLoaded = createSelector(getResumeRootState, fromResume.getLoaded);
 export const getResume = createSelector(getResumeRootState, fromResume.getResumeList);

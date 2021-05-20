@@ -1,0 +1,23 @@
+<mat-card on-mouseover="hover = true" on-mouseleave="hover = false" fxLayout="column" fxLayoutAlign="center center">
+    <img mat-card-image src="../../../assets/resume.png">
+    <span style="color: #538ec3">{{resume.name}}</span>
+    <div class="resume-hover" *ngIf="hover">
+        <div style="margin-top: 5rem;" fxLayoutAlign="start center" fxLayout="row wrap" fxLayoutGap="40px">
+            <button mat-icon-button>
+            <mat-icon class="icon" matTooltip="share">share</mat-icon>
+          </button>
+            <button mat-icon-button>
+            <mat-icon class="icon" matTooltip="Preview">visibility</mat-icon>
+          </button>
+            <button mat-icon-button>
+            <mat-icon class="icon" matTooltip="Delete">delete</mat-icon>
+          </button>
+            <button mat-icon-button>
+            <mat-icon class="icon" matTooltip="Edit">create</mat-icon>
+          </button>
+            <button mat-icon-button>
+            <mat-icon class="icon" matTooltip="Download">download</mat-icon>
+          </button>
+        </div>
+    </div>
+</mat-card>

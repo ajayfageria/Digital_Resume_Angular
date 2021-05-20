@@ -1,3 +1,4 @@
+import { DashboardComponent } from './container/layout/dashboard/dashboard.component';
 import { EducationComponent } from './container/resume-forms/education/education.component';
 import { Education } from './models/education';
 import { NgModule } from '@angular/core';
@@ -19,7 +20,6 @@ import { VerificationComponent } from './container/verification/verification.com
 import { AuthGuard } from './guards/auth-guards';
 import { AnonGuards } from './guards/anon-guards';
 import { OnBoardingComponent } from './container/onboarding/on-boarding/on-boarding.component';
-import { DashboardComponent } from './container/dashboard/dashboard.component';
 import { Onboardingcomplete } from './guards/onboardingcomplete -guards';
 import { Onboardingincomplete } from './guards/onboardingincomplete-guards';
 import { Verificatoncompleted } from './guards/verificationcompleted-guards';
@@ -85,16 +85,26 @@ import { StoreModule } from '@ngrx/store';
 import { rootReducer } from './reducers';
 import { AuthRepository } from './repository/auth-repository';
 import {ResumeRepository} from './repository/resume-repository';
+import { ResumeComponent } from './container/dashboard/resume/resume.component';
+import { SettingComponent } from './container/dashboard/setting/setting.component';
+import { HelpcenterComponent } from './container/dashboard/helpcenter/helpcenter.component';
+import { HeaderComponent } from './container/layout/header/header.component';
+import { LogoutComponent } from './components/logout/logout.component';
+import { NotFoundComponent } from './container/not-found/not-found.component';
+import { ProfileSettingsComponent } from './components/profile-settings/profile-settings.component';
+import { PasswordComponent } from './components/password/password.component';
+import { ResumeCardComponent } from './components/resume-card/resume-card.component';
+import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
   declarations: [
+    DashboardComponent,
     AppComponent,
     LoginComponent,
     SignupComponent,
     ForgotPasswordComponent,
     VerificationComponent,
     OnBoardingComponent,
-    DashboardComponent,
     OnboardingIntroComponent,
     ResumeNameComponent,
     UploadComponent,
@@ -152,7 +162,17 @@ import {ResumeRepository} from './repository/resume-repository';
     WeaknessFormComponent,
     WeaknessListComponent,
     WeaknessCardComponent,
-    Truncate
+    Truncate,
+    ResumeComponent,
+    SettingComponent,
+    HelpcenterComponent,
+    HeaderComponent,
+    LogoutComponent,
+    NotFoundComponent,
+    ProfileSettingsComponent,
+    PasswordComponent,
+    ResumeCardComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,

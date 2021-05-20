@@ -55,7 +55,7 @@ export class IndustrialExposureFormComponent implements OnInit {
   }
 
   update() {
-    const observer$ = this.resumeRepo.updateIndustrialExposure(this.form.value, this.data.industrialExposure._id);
+    const observer$ = this.resumeRepo.updateIndustrialExposure(this.form.value, this.data.resumeId, this.data.industrialExposure._id);
     observer$.subscribe((data: any) => {
       this.dialogRef.close();
     });

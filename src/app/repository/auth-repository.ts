@@ -2,9 +2,11 @@ import {Injectable} from '@angular/core';
 import {combineLatest, Observable} from 'rxjs';
 import {Users} from '../models/users';
 import {Store} from '@ngrx/store';
-import {LoginRequestAction, LoginSuccessAction, UserProfileRequestAction, UserProfileSuccessAction} from '../actions/user-actions';
+import {LoginRequestAction, LoginSuccessAction, LogoutAction, UserProfileRequestAction, UserProfileSuccessAction, UserUpdateAction} from '../actions/user-actions';
 import { ApiService } from '../services/apiService';
 import { getUser, userLoggedIn,userLoggingIn } from '../reducers';
+import { map, take } from 'rxjs/operators';
+import { AuthUtils } from '../utility/auth-utils';
 
 
 @Injectable()
@@ -35,7 +37,7 @@ login(data: { email: string, password: string }): Observable<Users> {
     const loggedIn$ = this.store.select(userLoggedIn);
     const loggingIn$ = this.store.select(userLoggingIn);
     const user$ = this.store.select(getUser);
-    combineLatest([loggedIn$, loggingIn$, user$]).subscribe(data => {
+    combineLatest([loggedIn$, loggingIn$, user$]).pipe(take(1)).subscribe(data => {
       if (!data[0] && !data[1] || force) {
         this.store.dispatch(new UserProfileRequestAction());
         this.apiService.fetchMe().subscribe(user => {
@@ -45,4 +47,18 @@ login(data: { email: string, password: string }): Observable<Users> {
     });
     return user$;
   }
+  logout() {
+      AuthUtils.removeToken();
+        this.store.dispatch(new LogoutAction());
+      }
+      updateProfile(data: any) {
+            const userProfile = {...data, ...{job_category: 'abc', experience_level: 'ads'}};
+            return this.apiService.updateUserProfile(userProfile)
+             .pipe(map((res: any) => {
+              this.store.dispatch(new UserUpdateAction(res));
+              }));
+          }
+          updatePassword(data: any) {
+                return this.apiService.updatePassword(data);
+             }
 }
