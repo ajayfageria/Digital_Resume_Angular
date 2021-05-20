@@ -51,6 +51,9 @@ export class ApiService {
     updateOnBoarding(data: { onboarding: number }) {
         return this.httpService.patch('/user/update/onboarding', data);
     }
+    getResumeById(id: any): Observable<Resume> {
+        return this.httpService.get('/resume/' + id);
+      }
     updateViewsCount(data: { views: number }, id: string) {
         return this.httpService.patch('/resume/update/resume/views/' + id, data);
     }
