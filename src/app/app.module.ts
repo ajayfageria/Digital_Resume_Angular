@@ -95,6 +95,9 @@ import { ProfileSettingsComponent } from './components/profile-settings/profile-
 import { PasswordComponent } from './components/password/password.component';
 import { ResumeCardComponent } from './components/resume-card/resume-card.component';
 import { ErrorComponent } from './components/error/error.component';
+import { AddOrEditResumeComponent } from './components/dialogues/add-or-edit-resume/add-or-edit-resume.component';
+import { TemplatesComponent } from './container/templates/templates.component';
+import { SingletemplatesComponent } from './container/singletemplates/singletemplates.component';
 
 @NgModule({
   declarations: [
@@ -172,7 +175,10 @@ import { ErrorComponent } from './components/error/error.component';
     ProfileSettingsComponent,
     PasswordComponent,
     ResumeCardComponent,
-    ErrorComponent
+    ErrorComponent,
+    AddOrEditResumeComponent,
+    TemplatesComponent,
+    SingletemplatesComponent
   ],
   imports: [
     BrowserModule,

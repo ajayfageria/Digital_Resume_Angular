@@ -20,7 +20,7 @@ import {
   ResumeListRequestAction,
   ResumeListSuccessAction, UpdateAwardAction,
   UpdateContactDetailAction,
-  UpdateEducationAction,
+  UpdateEducationAction, DeleteResumeAction,
   UpdateEmploymentHistoryAction, UpdateIndustrialExposureAction,
   UpdateInterestAction,
   UpdateLanguageAction, UpdateObjectiveAction, UpdateProjectDetailAction, UpdateReferenceAction,
@@ -54,7 +54,11 @@ export class ResumeRepository {
     });
     return [loading$, error$, resume$];
   }
-
+  editResume(data: any, resumeId: string) {
+      return this.apiService.editResume(data, resumeId).pipe(map((resume: any) => {
+        this.store.dispatch(new UpdateResumeAction(resume));
+      }));
+    }
   saveResume(data: any): Observable<any>  {
     return this.apiService.saveResume(data).pipe(map((resume) => {
       this.store.dispatch(new AddResumeAction(resume));
@@ -68,7 +72,11 @@ export class ResumeRepository {
       return resume;
     }));
   }
-
+  deleteResume(resumeId: any) {
+      return this.apiService.deleteResume(resumeId).pipe(map((resume) => {
+         this.store.dispatch(new DeleteResumeAction(resumeId));
+       }));
+    }
   deleteImage(resumeId: string) {
     return this.apiService.deleteImage(resumeId).pipe(map((resume) => {
       this.store.dispatch(new UpdateResumeAction(resume));

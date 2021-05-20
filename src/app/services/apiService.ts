@@ -18,12 +18,18 @@ export class ApiService {
             return res.user;
         }));
     }
+    editResume(data: { name: string }, resumeId: string) {
+        return this.httpService.patch('/resume/update/resume/' + resumeId, data);
+    }
+    deleteResume(resumeId: string) {
+       return this.httpService.delete('/resume/delete/resume/' + resumeId);
+      }
     updateUserProfile(data: any) {
-            return this.httpService.patch('/user/update/profile', data);
-          }
-          updatePassword(data: any) {
-                return this.httpService.patch('/user/update/password', data);
-              }
+        return this.httpService.patch('/user/update/profile', data);
+    }
+    updatePassword(data: any) {
+        return this.httpService.patch('/user/update/password', data);
+    }
     signup(data: {
         email: string, password: string, confirm_password: string,
         name: string, job_category: string, experience_level: string
@@ -43,11 +49,11 @@ export class ApiService {
         return this.httpService.get('/resume/all');
     }
     updateOnBoarding(data: { onboarding: number }) {
-            return this.httpService.patch('/user/update/onboarding', data);
-         }
+        return this.httpService.patch('/user/update/onboarding', data);
+    }
     updateViewsCount(data: { views: number }, id: string) {
-       return this.httpService.patch('/resume/update/resume/views/' + id, data);
-         }
+        return this.httpService.patch('/resume/update/resume/views/' + id, data);
+    }
     saveResume(data: { name: string }) {
         return this.httpService.post('/resume/add/resume', data);
     }

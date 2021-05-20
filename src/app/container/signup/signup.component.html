@@ -29,7 +29,7 @@
             <input formControlName="job_category" matInput placeholder="Job Category" />
             <mat-error> Job Category is Required</mat-error>
         </mat-form-field>
-        <div fxLayoutGap="row" fxLayoutAlign="end" fxLayoutGap="5%" style="margin-top: 7%;">
+        <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="5%" style="margin-top: 7%;">
             <mat-spinner *ngIf="loading" color="primary" diameter="40"></mat-spinner>
             <button type="button" (click)="backLogin()" mat-raised-button color="primary">Back to Login</button>
             <button type="submit" [disabled]="isDisabled" mat-raised-button color="accent">Signup</button>

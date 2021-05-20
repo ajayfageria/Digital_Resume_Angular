@@ -1,4 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { AddOrEditResumeComponent } from 'src/app/components/dialogues/add-or-edit-resume/add-or-edit-resume.component';
 import { Resume } from 'src/app/models/resume';
 import { ResumeRepository } from 'src/app/repository/resume-repository';
 
@@ -13,7 +15,7 @@ export class ResumeComponent implements OnInit, OnDestroy {
   isAlive = true;
   loading = false;
   error = false;
-  constructor(private resumeRepo: ResumeRepository) { }
+  constructor(private resumeRepo: ResumeRepository, private matDialog: MatDialog) { }
 
   ngOnInit() {
     this.fetchData();
@@ -32,5 +34,10 @@ export class ResumeComponent implements OnInit, OnDestroy {
       this.loading = loading;
     });
   }
-
+  addResume() {
+       this.matDialog.open(AddOrEditResumeComponent, {
+          height: '25%',
+         width: '50%'
+       });
+    }
 }

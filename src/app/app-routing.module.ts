@@ -1,3 +1,4 @@
+import { SingletemplatesComponent } from './container/singletemplates/singletemplates.component';
 import { NotFoundComponent } from './container/not-found/not-found.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { HelpcenterComponent } from './container/dashboard/helpcenter/helpcenter.component';
@@ -18,6 +19,7 @@ import { Verificatoncompleted } from './guards/verificationcompleted-guards';
 import { Verificatonincomplete } from './guards/verificatonincomplete-guards';
 import { SettingComponent } from './container/dashboard/setting/setting.component';
 import { DashboardComponent } from './container/layout/dashboard/dashboard.component';
+import { TemplatesComponent } from './container/templates/templates.component';
 
 const routes: Routes = [
   {
@@ -28,8 +30,8 @@ const routes: Routes = [
       {path: '', component: LoginComponent}
      ]
   },
-   {
-      path: '', canActivate: [AuthGuard, Verificatonincomplete], 
+   {  
+      path: '', //canActivate: [AuthGuard, Verificatonincomplete], 
       children: [
         { path: 'verify', component: VerificationComponent,}
        ]
@@ -39,7 +41,7 @@ const routes: Routes = [
              children: [
               {path: 'on-boarding', component: OnboardingIntroComponent}, 
               {path: 'on-boarding/add', component: OnBoardingComponent}],
-             canActivate: [AuthGuard, Verificatoncompleted, Onboardingincomplete]
+             //canActivate: [AuthGuard, Verificatoncompleted, Onboardingincomplete]
     },
    {
              path: '',
@@ -48,7 +50,9 @@ const routes: Routes = [
               children:[
                 {path: 'resume', component: ResumeComponent},
                 {path: 'settings', component: SettingComponent},
-                {path: 'help-center', component: HelpcenterComponent}
+                {path: 'help-center', component: HelpcenterComponent},
+                {path: 'resume/template/:id', component: TemplatesComponent},
+                {path: 'resume/template/:id/:templateId', component: SingletemplatesComponent}
               ]
               },
               {path:'logout',component: LogoutComponent},

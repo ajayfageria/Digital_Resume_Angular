@@ -10,7 +10,7 @@ import {
   RESUME_ADD_INTEREST,
   RESUME_ADD_LANGUAGE,
   RESUME_ADD_OBJECTIVE, RESUME_ADD_PROJECT_DETAIL, RESUME_ADD_REFERENCE,
-  RESUME_ADD_SKILL, RESUME_ADD_STRENGTH, RESUME_ADD_WEAKNESS,
+  RESUME_ADD_SKILL, RESUME_ADD_STRENGTH, RESUME_ADD_WEAKNESS,RESUME_ADD_SUCCESS,
   RESUME_DELETE,
   RESUME_DELETE_AWARDS,
   RESUME_DELETE_EDUCATION,
@@ -158,6 +158,13 @@ export function ResumeReducer(state = initialState, action: Action): ResumeReduc
             const newEntities = {...state.entities, ...obj};
             return {...state, ...{entities: newEntities}};
           }
+          case RESUME_ADD_SUCCESS: {
+                const resume = action.payload;
+                const obj = {[resume._id]: resume};
+                  const newIds = [...state.ids, resume._id];
+                  const entities = {...state.entities, ...obj};
+                 return {...state, ...{entities, ids: newIds}};
+               }
           case RESUME_ADD_EMPLOYMENT_HISTORY: {
             const employmentHistory = action.payload.employment_history;
             const resumeId = action.payload.resume_id;
