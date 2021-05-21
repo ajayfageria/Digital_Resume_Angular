@@ -20,6 +20,7 @@ import { Verificatonincomplete } from './guards/verificatonincomplete-guards';
 import { SettingComponent } from './container/dashboard/setting/setting.component';
 import { DashboardComponent } from './container/layout/dashboard/dashboard.component';
 import { TemplatesComponent } from './container/templates/templates.component';
+import { SingleResumeComponent } from './container/single-resume/single-resume.component';
 
 const routes: Routes = [
   {
@@ -43,6 +44,7 @@ const routes: Routes = [
               {path: 'on-boarding/add', component: OnBoardingComponent}],
              //canActivate: [AuthGuard, Verificatoncompleted, Onboardingincomplete]
     },
+           {path: 'resume/view/:id', component: SingleResumeComponent},
    {
              path: '',
              children: [
@@ -52,7 +54,8 @@ const routes: Routes = [
                 {path: 'settings', component: SettingComponent},
                 {path: 'help-center', component: HelpcenterComponent},
                 {path: 'resume/template/:id', component: TemplatesComponent},
-                {path: 'resume/template/:id/:templateId', component: SingletemplatesComponent}
+                {path: 'resume/template/:id/:templateId', component: SingletemplatesComponent},
+                {path: 'resume/preview/:id', component: SingleResumeComponent}
               ]
               },
               {path:'logout',component: LogoutComponent},

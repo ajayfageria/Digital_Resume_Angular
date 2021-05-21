@@ -33,4 +33,7 @@ delete() {
   download() {
         this.router.navigate(['dashboard', 'resume', 'template', this.resume._id]);
       }
+      preview() {
+           this.router.navigate(['dashboard', 'resume', 'preview', this.resume._id]);
+       }
 }
