@@ -1,0 +1,16 @@
+.overlayout {
+    width: 100%;
+    height: auto;
+}
+
+mat-icon {
+    color: #4c86bd;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.share-icons :hover {
+    cursor: pointer;
+}

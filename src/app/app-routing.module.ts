@@ -23,18 +23,20 @@ import { TemplatesComponent } from './container/templates/templates.component';
 import { SingleResumeComponent } from './container/single-resume/single-resume.component';
 import { ResumeFormComponent } from './container/resume-forms/resume-form/resume-form.component';
 import { UploadComponent } from './container/tabs/upload/upload.component';
+import { DemoComponent } from './container/demo/demo.component';
 
 const routes: Routes = [
   {
     path: '', canActivate: [AnonGuards],
     children: [
+      {path: '', component: LoginComponent},
       {path: 'signup', component: SignupComponent},
-      {path: 'forgot-password', component: ForgotPasswordComponent},
-      {path: '', component: LoginComponent}
+      {path: 'forgot-password', component: ForgotPasswordComponent}
+      
      ]
   },
    {  
-      path: '', //canActivate: [AuthGuard, Verificatonincomplete], 
+      path: '', canActivate: [AuthGuard, Verificatonincomplete], 
       children: [
         { path: 'verify', component: VerificationComponent,}
        ]
@@ -44,7 +46,7 @@ const routes: Routes = [
              children: [
               {path: 'on-boarding', component: OnboardingIntroComponent}, 
               {path: 'on-boarding/add', component: OnBoardingComponent}],
-             //canActivate: [AuthGuard, Verificatoncompleted, Onboardingincomplete]
+             canActivate: [AuthGuard, Verificatoncompleted, Onboardingincomplete]
     },
            {path: 'resume/view/:id', component: SingleResumeComponent},
    {
@@ -64,10 +66,11 @@ const routes: Routes = [
                          {path: 'resume/edit/profile/:id', component: UploadComponent}
               ]
               },
+              {path: 'demo', component: DemoComponent},
               {path:'logout',component: LogoutComponent},
               {path:'**',component: NotFoundComponent}
              ],
-            //  canActivate: [AuthGuard, Verificatoncompleted, Onboardingcomplete]
+              canActivate: [AuthGuard, Verificatoncompleted, Onboardingcomplete]
     }
  ];
 

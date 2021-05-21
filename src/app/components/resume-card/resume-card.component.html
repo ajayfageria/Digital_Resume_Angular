@@ -4,7 +4,7 @@
     <div class="resume-hover" *ngIf="hover">
         <div style="margin-top: 5rem;" fxLayoutAlign="start center" fxLayout="row wrap" fxLayoutGap="40px">
             <button mat-icon-button>
-            <mat-icon class="icon" matTooltip="share">share</mat-icon>
+            <mat-icon (click)="shareLink()"class="icon" matTooltip="share">share</mat-icon>
           </button>
             <button (click)="preview()" mat-icon-button>
             <mat-icon class="icon" matTooltip="Preview">visibility</mat-icon>

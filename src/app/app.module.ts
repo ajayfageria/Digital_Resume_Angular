@@ -1,3 +1,4 @@
+import { ShareLinkComponent } from './components/share-link/share-link.component';
 import { DashboardComponent } from './container/layout/dashboard/dashboard.component';
 import { EducationComponent } from './container/resume-forms/education/education.component';
 import { Education } from './models/education';
@@ -82,7 +83,9 @@ import { WeaknessListComponent } from './container/resume-forms/resume-lists/wea
 import { WeaknessCardComponent } from './container/resume-forms/resume-card/weakness-card/weakness-card.component';
 import { Truncate } from './pipes/truncate';
 import { StoreModule } from '@ngrx/store';
+import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
 import { rootReducer } from './reducers';
+import { ShareIconsModule } from 'ngx-sharebuttons/icons';
 import { AuthRepository } from './repository/auth-repository';
 import {ResumeRepository} from './repository/resume-repository';
 import { ResumeComponent } from './container/dashboard/resume/resume.component';
@@ -120,6 +123,9 @@ import { TemplateAwardsComponent } from './components/resume-template/template-a
 import { TemplateObjectiveComponent } from './components/resume-template/template-objective/template-objective.component';
 import { TemplateReferenceComponent } from './components/resume-template/template-reference/template-reference.component';
 import { TemplateProjectDetailComponent } from './components/resume-template/template-project-detail/template-project-detail.component';
+import { DemoComponent } from './container/demo/demo.component';
+import { DemochildComponent } from './container/demochild/demochild.component';
+import { SecondaryComponent } from './container/secondary/secondary.component';
 
 @NgModule({
   declarations: [
@@ -222,7 +228,10 @@ import { TemplateProjectDetailComponent } from './components/resume-template/tem
     TemplateAwardsComponent,
     TemplateObjectiveComponent,
     TemplateReferenceComponent,
-    TemplateProjectDetailComponent
+    TemplateProjectDetailComponent,
+    DemoComponent,
+    DemochildComponent,
+    SecondaryComponent,ShareLinkComponent
   ],
   imports: [
     BrowserModule,
@@ -231,12 +240,12 @@ import { TemplateProjectDetailComponent } from './components/resume-template/tem
     MaterialModule,
     FlexLayoutModule,
     ReactiveFormsModule,
-    FormsModule,
-    HttpClientModule,
+    FormsModule,ShareIconsModule,
+    HttpClientModule,ShareIconsModule, ShareButtonsModule,
     StoreModule.forRoot(rootReducer),
   ],
   providers: [HttpService,ApiService,AlertService,AuthGuard,AnonGuards,Onboardingcomplete,Onboardingincomplete,
-     Verificatoncompleted,Verificatonincomplete,AuthRepository, ResumeRepository
+     Verificatoncompleted,Verificatonincomplete,AuthRepository, ResumeRepository,
   ],
   bootstrap: [AppComponent]
 })

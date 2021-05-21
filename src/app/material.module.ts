@@ -17,16 +17,15 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { MatOptionModule, MatRippleModule } from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { ShareIconsModule } from 'ngx-sharebuttons/icons';
 
 const moduleList = [MatButtonModule,
   MatMenuModule,
   MatToolbarModule,
-  MatIconModule,
   MatCardModule,
   MatCheckboxModule,
   MatToolbarModule,
   MatInputModule,
-  MatIconModule,
   MatFormFieldModule,
   MatProgressSpinnerModule,
   MatSnackBarModule,
@@ -38,7 +37,7 @@ const moduleList = [MatButtonModule,
   MatTooltipModule,
   MatRippleModule,
   MatMenuModule,
-  MatProgressBarModule,
+  MatProgressBarModule,MatIconModule,
   MatSelectModule] 
 @NgModule({
   imports: [

@@ -1,3 +1,4 @@
+import { ShareLinkComponent } from './../share-link/share-link.component';
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -24,6 +25,13 @@ export class ResumeCardComponent implements OnInit {
          width: '50%',
          height: '25%'
        });
+}
+shareLink() {
+  this.matDialog.open(ShareLinkComponent, {
+      data: this.resume,
+      width: '55%',
+      height: '30%'
+    });
 }
 delete() {
      this.resumeRepo.deleteResume(this.resume._id).subscribe(() => {

@@ -1,0 +1,22 @@
+<div class="overlayout" fxLayout="column" fxLayoutGap="10px">
+    <div fxLayout="row">
+        <mat-form-field>
+            <input matInput [value]="this.link" placeholder="Resume link" />
+        </mat-form-field>
+        <button (click)="copy()" matTooltip="copy to clipboard" mat-icon-button>
+          <mat-icon>filter_none</mat-icon>
+     </button>
+    </div>
+</div>
+<div fxLayout="row" fxLayoutGap="80px" fxLayoutAlign="center center">
+    <i class="share-icons" style="color: #4267B2;" class="fa fa-linkedin-square fa-4x" aria-hidden="true"></i>
+    <i style="color: #4267B2;" class="fa fa-facebook-square fa-4x" aria-hidden="true"></i>
+    <i style="color: #FF0000;" class="fa fa-youtube-play fa-4x" aria-hidden="true"></i>
+    <i style="color: #405DE6;" class="fa fa-instagram fa-4x" aria-hidden="true"></i>
+    <i style="color: #E60023;" class="fa fa-reddit-square fa-4x" aria-hidden="true"></i>
+    <i style="color: #4267B2;" class="fa fa-envelope fa-4x" aria-hidden="true"></i>
+
+
+    <!-- <share-buttons [exclude]="['copy','print']"></share-buttons> -->
+
+</div>
