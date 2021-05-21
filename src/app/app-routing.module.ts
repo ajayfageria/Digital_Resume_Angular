@@ -21,6 +21,8 @@ import { SettingComponent } from './container/dashboard/setting/setting.componen
 import { DashboardComponent } from './container/layout/dashboard/dashboard.component';
 import { TemplatesComponent } from './container/templates/templates.component';
 import { SingleResumeComponent } from './container/single-resume/single-resume.component';
+import { ResumeFormComponent } from './container/resume-forms/resume-form/resume-form.component';
+import { UploadComponent } from './container/tabs/upload/upload.component';
 
 const routes: Routes = [
   {
@@ -55,7 +57,11 @@ const routes: Routes = [
                 {path: 'help-center', component: HelpcenterComponent},
                 {path: 'resume/template/:id', component: TemplatesComponent},
                 {path: 'resume/template/:id/:templateId', component: SingletemplatesComponent},
-                {path: 'resume/preview/:id', component: SingleResumeComponent}
+                {path: 'resume/preview/:id', component: SingleResumeComponent},
+                {
+                          path: 'resume/edit/:id', component: ResumeFormComponent
+                         },
+                         {path: 'resume/edit/profile/:id', component: UploadComponent}
               ]
               },
               {path:'logout',component: LogoutComponent},

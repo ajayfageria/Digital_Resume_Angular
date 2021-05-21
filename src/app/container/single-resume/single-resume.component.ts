@@ -15,8 +15,11 @@ export class SingleResumeComponent implements OnInit, OnDestroy  {
   isAlive = true;
   isPreview = false;
   imageUrl = '';
+  isLeftPanelEnabled = true;
   constructor(private route: ActivatedRoute,
-    private router: Router, private resumeRepo: ResumeRepository) { }
+    private router: Router, private resumeRepo: ResumeRepository) { 
+      document.body.style.backgroundImage = 'url("../../../assets/back.jpg")';
+    }
 
     ngOnInit() {
       this.isPreview = this.router.url.includes('preview');
@@ -28,12 +31,15 @@ export class SingleResumeComponent implements OnInit, OnDestroy  {
       resume$.subscribe(data => {
         console.log(data);
         this.resume = data;
-        this.imageUrl = this.resume.image_url ? this.resume.image_url : '../../assets/testimonial.png';
+        this.isLeftPanelEnabled = !!(this.resume.contact_details || this.resume.skills.length ||
+                  this.resume.weakness.length || this.resume.languages.length || this.resume.strengths.length);
+      
       });
     }
   
     ngOnDestroy() {
       this.isAlive = false;
+      document.body.style.backgroundImage = '';
     }
 
 }

@@ -1,28 +1,16 @@
-<div class="main-div" fxLayout="row" *ngIf="this.resume">
-    <mat-card class="sidebar" *ngIf="this.resume.contact_details || this.resume.skills.length ||
-this.resume.weakness.length || this.resume.languages.length || this.resume.strengths.length">
+<div class="main-div " fxLayout="{{this.isLeftPanelEnabled ? 'row': 'column'}}" fxLayout.xs="column" fxLayoutAlign="{{this.isLeftPanelEnabled ? 'start start':'center center'}}" fxLayoutGap="50px" *ngIf="this.resume">
+    <mat-card class="sidebar" *ngIf="this.isLeftPanelEnabled">
         <div fxLayout="column" fxLayoutGap="20px">
             <button matTooltip="Views: {{this.resume.views}}" style="background: #f1c232;" mat-mini-fab *ngIf="this.resume && this.isPreview && this.resume.contact_details ">
           <mat-icon style="color: black">remove_red_eye</mat-icon>
         </button>
-            <div fxLayout="column" fxLayoutAlign="center center">
-                <button [ngStyle]="{'background-image':'url('+this.imageUrl+')'}" mat-fab class="profile-pic">
-
-          </button>
-                <h1>{{this.resume.contact_details.first_name}} {{this.resume.contact_details.last_name}}
-                </h1>
-                <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="30px">
-                    <button mat-mini-fab matTooltip="edit resume">
-              <mat-icon>assignment</mat-icon>
-            </button>
-                    <button mat-mini-fab matTooltip="edit profile image or vide">
-              <mat-icon>videocam</mat-icon>
-            </button>
-                    <button mat-mini-fab matTooltip="share resume">
-              <mat-icon>share</mat-icon>
-            </button>
-                </div>
-            </div>
+            <app-template-contact-detail [resume]="resume">
+            </app-template-contact-detail>
         </div>
     </mat-card>
+
+    <app-template-button [isLeftPanelEnabled]="isLeftPanelEnabled" *ngIf="!isLeftPanelEnabled" [resumeId]="resume._id"></app-template-button>
+    <app-template-details [resume]="resume"></app-template-details>
+
+
 </div>
